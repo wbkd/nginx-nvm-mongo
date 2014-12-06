@@ -9,13 +9,13 @@
 This template uses [Packer](https://www.packer.io/) to build a [DigitalOcean](https://digitalocean.com) snapshot running Ubuntu.
 Packer will use [Ansible](http://ansible.com/) to provision the machine and perform the following steps:
 
-- add a **new user** and configur **groups**
+- add a **new user** and configure **groups**
 - enable and configure **sudo**
 - enable some opinionated **ssh security settings**
 - adding your **ssh key** to the droplet
 - enable and configure **ufw firewall**
 - set up **zsh** and **oh-my-zsh**
-- install and configure **nginx*** to serve a static folder and an upstream backend
+- install and configure **nginx** to serve a static folder and an upstream backend
 - install **nvm**, **node.js** and a list of required **npm packages**
 - install **mongodb**
 
@@ -47,7 +47,7 @@ You can log into the droplet via ssh using the user you specified in `./ansible/
 - If errors occur **creating the droplet**, then you should double-check if the installed packer **version is greater than 0.8**.
 
 - You should not upload folder containing **symlinks** or you will run into the [following issue](https://github.com/mitchellh/packer/issues/1627):
-```
- errored: Error uploading playbook_dir directory
  ```
- That's why `./run.sh` is actually **deleting all symlinks** from the project folder.
+  errored: Error uploading playbook_dir directory
+  ```
+  That's why `./run.sh` is actually **deleting all symlinks** from the project folder.
