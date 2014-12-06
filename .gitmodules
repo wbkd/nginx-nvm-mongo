@@ -1,0 +1,24 @@
+[submodule "ansible/roles/nginx"]
+	path = ansible/roles/nginx
+	url = https://github.com/jdauphant/ansible-role-nginx.git
+[submodule "ansible/roles/users"]
+	path = ansible/roles/users
+	url = https://github.com/mivok/ansible-users.git
+[submodule "ansible/roles/sudo"]
+	path = ansible/roles/sudo
+	url = https://github.com/weareinteractive/ansible-sudo.git
+[submodule "ansible/roles/ssh"]
+	path = ansible/roles/ssh
+	url = https://github.com/ANXS/openssh.git
+[submodule "ansible/roles/ufw"]
+	path = ansible/roles/ufw
+	url = https://github.com/jlund/ansible-ufw.git
+[submodule "ansible/roles/zsh"]
+	path = ansible/roles/zsh
+	url = https://github.com/g-div/devbox.oh-my-zsh.git
+[submodule "ansible/roles/nvm"]
+	path = ansible/roles/nvm
+	url = https://github.com/g-div/ansible-nvm.git
+[submodule "ansible/roles/mongodb"]
+	path = ansible/roles/mongodb
+	url = https://github.com/Stouts/Stouts.mongodb.git

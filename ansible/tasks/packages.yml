@@ -1,0 +1,20 @@
+- name: Install updates
+  apt: upgrade=dist update_cache=yes
+
+- name: Install essential packages
+  apt: pkg="{{ item }}" state=latest 
+  with_items:
+    - tmux
+    - fail2ban     
+    - python-pip
+    - git
+    - wget
+    - curl
+    - rsync
+    - zip
+    - vim
+
+- name: Ensure services is running and enabled
+  service: name="{{ item }}" state=running enabled=yes
+  with_items:
+    - fail2ban

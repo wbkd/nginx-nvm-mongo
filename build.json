@@ -1,0 +1,28 @@
+{
+	"builders": [{
+		"type": "digitalocean",
+		"api_token": "",
+		"region": "ams3",
+		"size": "512mb",
+		"snapshot_name": "nvm-nginx-node-{{timestamp}}"
+	}],
+
+	"provisioners": [{
+		"type": "shell",
+		"inline": [
+			"sleep 30",
+			"DEBIAN_FRONTEND=noninteractive",
+			"apt-get install -y software-properties-common python-software-properties",
+			"add-apt-repository -y ppa:rquillo/ansible",
+			"apt-get update",
+			"apt-get -y install ansible"
+		]
+	}, {
+		"type": "ansible-local",
+		"playbook_dir": "ansible",
+		"playbook_file": "ansible/provision.yml",
+		"role_paths": [
+			"ansible/roles"
+		]
+	}]
+}

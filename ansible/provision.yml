@@ -1,0 +1,72 @@
+---
+- name: Provision a brand new machine
+  hosts: 127.0.0.1
+  user: root
+  connection: local
+
+  vars_files:
+    - vars.yml
+
+  pre_tasks:
+    - include: tasks/packages.yml
+
+  roles:
+    - role: users
+      users:
+        - username: "{{ user }}"
+          name: "{{ user }}"
+          uid: 1001
+          groups: ["{{ group }}"]
+          shell: /bin/zsh
+          users_create_homedirs: true
+          ssh_key:
+            - "{{ lookup('file', 'files/id_rsa.pub') }}"
+
+    - role: sudo
+      sudo_users:
+        - { name: "{{ user }}", nopasswd: no }
+        - { name: "%{{ group }}", nopasswd: yes }
+
+    - role: ssh
+
+    - role: ufw
+      ufw_whitelisted_ports:
+        -  { port: 22,  protocol: tcp }
+        -  { port: 53,  protocol: udp }
+        -  { port: 80,  protocol: tcp }
+        -  { port: 443, protocol: tcp }
+      ufw_connection_rate_limits:
+        - { port: 22,   protocol: tcp }
+        - { port: 80,   protocol: tcp }
+
+    - role: nginx
+      nginx_http_params:
+        - sendfile on
+        - access_log /var/log/nginx/access.log
+      nginx_sites:
+        default:
+          - listen 80
+          - server_name localhost
+          - root "{{ nginx_root }}"
+          - index index.html index.htm
+          - location / { try_files $uri $uri/ @backend; }
+          - location @backend { proxy_pass http://node_backend; }
+      nginx_configs:
+        proxy:
+          - proxy_set_header X-Real-IP  $remote_addr
+          - proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for
+        upstream:
+          - upstream node_backend { server 127.0.0.1:{{ node_port }} weight=10; }
+
+    - role: zsh
+
+    - role: nvm
+      nvm:
+        user: "{{ user }}"
+        version: "{{ nvm_version }}"
+        node_version: "{{ node_version }}"
+        profile_file: ~{{ user }}/.zshrc
+        shell: zsh
+        packages: "{{ npm_packages }}"
+
+    - role: mongodb
