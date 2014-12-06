@@ -46,7 +46,7 @@ You can log into the droplet via ssh using the user you specified in `./ansible/
 
 - If errors occur **creating the droplet**, then you should double-check if the installed packer **version is greater than 0.8**.
 
-- You should not upload folder containing **symlinks** or you will run into the [following issue](https://github.com/mitchellh/packer/issues/1627):
+- You should not upload folders containing **symlinks** or you will run into the [following issue](https://github.com/mitchellh/packer/issues/1627):
  ```
   errored: Error uploading playbook_dir directory
   ```
