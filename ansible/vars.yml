@@ -9,4 +9,4 @@ node_port: 8000
 nginx_root: /home/web/project
 
 npm_packages:
-  - sails
+  - forever

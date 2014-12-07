@@ -1,0 +1,12 @@
+- name: Chowning directories
+  file: path=~"{{ user }}/.{{ item }}/" owner="{{ user }}" group="{{ group }}" recurse=yes state=directory
+  with_items:
+    - nvm
+    - npm
+    - oh-my-zsh
+
+- name: Chowning files
+  file: path=~"{{ user }}/.{{ item }}" owner="{{ user }}" group="{{ group }}"
+  with_items:
+    - zshrc
+    - profile

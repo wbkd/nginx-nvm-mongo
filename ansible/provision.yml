@@ -37,7 +37,6 @@
         -  { port: 443, protocol: tcp }
       ufw_connection_rate_limits:
         - { port: 22,   protocol: tcp }
-        - { port: 80,   protocol: tcp }
 
     - role: nginx
       nginx_http_params:
@@ -59,8 +58,10 @@
           - upstream node_backend { server 127.0.0.1:{{ node_port }} weight=10; }
 
     - role: zsh
+      remote_user: web
 
     - role: nvm
+      remote_user: web
       nvm:
         user: "{{ user }}"
         version: "{{ nvm_version }}"
@@ -70,3 +71,6 @@
         packages: "{{ npm_packages }}"
 
     - role: mongodb
+
+  tasks:
+    - include: tasks/chown.yml
