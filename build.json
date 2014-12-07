@@ -4,7 +4,7 @@
 		"api_token": "",
 		"region": "ams3",
 		"size": "512mb",
-		"snapshot_name": "nvm-nginx-node-{{timestamp}}"
+		"snapshot_name": "nginx-nvm-mongo-{{timestamp}}"
 	}],
 
 	"provisioners": [{
