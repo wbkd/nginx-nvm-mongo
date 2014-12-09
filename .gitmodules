@@ -22,3 +22,6 @@
 [submodule "ansible/roles/mongodb"]
 	path = ansible/roles/mongodb
 	url = https://github.com/Stouts/Stouts.mongodb.git
+[submodule "ansible/roles/github_keys"]
+	path = ansible/roles/github_keys
+	url = https://github.com/g-div/ansible-role-add-ssh-keys-from-github.git

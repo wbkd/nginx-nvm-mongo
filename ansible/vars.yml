@@ -10,3 +10,6 @@ nginx_root: /home/web/project
 
 npm_packages:
   - forever
+
+github_users:
+  - g-div

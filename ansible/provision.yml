@@ -29,6 +29,10 @@
 
     - role: ssh
 
+    - role: github_keys
+      add_ssh_keys_from_github:
+        usernames: "{{ github_users }}"
+
     - role: ufw
       ufw_whitelisted_ports:
         -  { port: 22,  protocol: tcp }
