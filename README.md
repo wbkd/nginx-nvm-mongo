@@ -1,6 +1,7 @@
 ### Index
 
 - [Requirements](#requirements)
+- [Clone](#clone)
 - [Configuration](#configuration)
 - [Run!](#run)
 - [Troubleshooting](#troubleshooting)
@@ -24,6 +25,14 @@ Have fun !
 ### Requirements:
 
 - **[Packer](https://www.packer.io/downloads)>=0.8**
+
+### Clone:
+This will clone the repository and its git [dependencies](https://github.com/wbkd/nginx-nvm-mongo/blob/master/ansible/roles)
+```
+git clone https://github.com/wbkd/nginx-nvm-mongo.git
+git submodule init
+git submodule update
+```
 
 ### Configuration
 
