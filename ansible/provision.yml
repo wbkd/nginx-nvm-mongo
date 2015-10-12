@@ -77,4 +77,4 @@
     - role: mongodb
 
   tasks:
-    - include: tasks/chown.yml
+    - include: tasks/files.yml
