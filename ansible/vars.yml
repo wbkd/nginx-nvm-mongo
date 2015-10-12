@@ -1,9 +1,10 @@
+---
 hostname: dom0
 user: web
 group: web
 
-nvm_version: v0.20.0
-node_version: '0.10'
+nvm_version: v0.29.0
+node_version: v4
 
 node_port: 8000
 nginx_root: /home/web/project
