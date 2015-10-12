@@ -1,3 +1,7 @@
+---
+- name: Create project folder
+  file: path={{ nginx_root }} owner={{ user }} group={{ group }} state=directory mode=0755
+
 - name: Chowning directories
   file: path=~"{{ user }}/.{{ item }}/" owner="{{ user }}" group="{{ group }}" recurse=yes state=directory
   with_items:
