@@ -42,6 +42,8 @@ Take a look to the shell variables used in `./run.sh`, you may need to adapt thi
 At the end of the deployment process, you should be able to launch the created droplet from your DigitalOcean panel.
 You can log into the droplet via ssh using the user you specified in `./ansible/vars.yml`.
 
+Place your static files in the folder associated with the variable `nginx_root` and run your application server on the port associated with the variable `node_port`.
+
 ### Troubleshooting
 
 - If errors occur **creating the droplet**, then you should double-check if the installed packer **version is greater than 0.8**.
