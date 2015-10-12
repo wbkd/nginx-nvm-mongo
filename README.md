@@ -1,6 +1,7 @@
 ### Index
 
 - [Requirements](#requirements)
+- [Clone](#clone)
 - [Configuration](#configuration)
 - [Run!](#run)
 - [Troubleshooting](#troubleshooting)
@@ -25,13 +26,21 @@ Have fun !
 
 - **[Packer](https://www.packer.io/downloads)>=0.8**
 
+### Clone:
+This will clone the repository and its git [dependencies](https://github.com/wbkd/nginx-nvm-mongo/blob/master/ansible/roles)
+```
+git clone https://github.com/wbkd/nginx-nvm-mongo.git
+git submodule init
+git submodule update
+```
+
 ### Configuration
 
-Packer's configuration is in `build.json`, you must add your **api_token** there or refer to the [Packer Documentation](https://www.packer.io/docs) in order to use other builders.
+Packer's configuration is in [build.json](https://github.com/wbkd/nginx-nvm-mongo/blob/master/build.json), you must add your **api_token** there or refer to the [Packer Documentation](https://www.packer.io/docs) in order to use other builders.
 
-The Ansible provision script`./ansible/provision.yml` has some variables defined at `./ansible/vars.yml`.
+The Ansible provision script [./ansible/provision.yml](https://github.com/wbkd/nginx-nvm-mongo/blob/master/ansible/provision.yml) has some variables defined at [./ansible/vars.yml](https://github.com/wbkd/nginx-nvm-mongo/blob/master/ansible/vars.yml).
 
-Take a look to the shell variables used in `./run.sh`, you may need to adapt this script to your system's requirements.
+Take a look to the shell variables used in [./run.sh](https://github.com/wbkd/nginx-nvm-mongo/blob/master/run.sh), you may need to adapt this script to your system's requirements.
 
 ### Run!
 
@@ -40,7 +49,7 @@ Take a look to the shell variables used in `./run.sh`, you may need to adapt thi
 ```
 
 At the end of the deployment process, you should be able to launch the created droplet from your DigitalOcean panel.
-You can log into the droplet via ssh using the user you specified in `./ansible/vars.yml`.
+You can log into the droplet via ssh using the user you specified in [./ansible/vars.yml](https://github.com/wbkd/nginx-nvm-mongo/blob/master/ansible/vars.yml).
 
 Place your static files in the folder associated with the variable `nginx_root` and run your application server on the port associated with the variable `node_port`. 
 
