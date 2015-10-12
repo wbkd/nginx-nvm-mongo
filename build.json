@@ -2,7 +2,8 @@
 	"builders": [{
 		"type": "digitalocean",
 		"api_token": "",
-		"region": "ams3",
+		"region": "fra1",
+		"image": "ubuntu-14-04-x64",
 		"size": "512mb",
 		"snapshot_name": "nginx-nvm-mongo-{{timestamp}}"
 	}],
@@ -10,8 +11,8 @@
 	"provisioners": [{
 		"type": "shell",
 		"inline": [
-			"sleep 30",
 			"DEBIAN_FRONTEND=noninteractive",
+			"apt-get update",
 			"apt-get install -y software-properties-common python-software-properties",
 			"add-apt-repository -y ppa:rquillo/ansible",
 			"apt-get update",
